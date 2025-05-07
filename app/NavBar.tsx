@@ -5,6 +5,7 @@ import React from "react";
 import Logo from "@/public/images/logo.svg";
 import classNames from "classnames";
 import { usePathname } from "next/navigation";
+import ThemeSwitch from "./components/ThemeSwitch";
 
 const NavBar = () => {
   const currentPath = usePathname();
@@ -34,8 +35,8 @@ const NavBar = () => {
             key={index}
             href={link.href}
             className={classNames({
-              "text-zinc-500": currentPath !== link.href,
-              "text-zinc-900": currentPath === link.href,
+              "text-zinc-500 dark:text-zinc-100": currentPath !== link.href,
+              "text-zinc-900 dark:text-zinc-100": currentPath === link.href,
               "hover:text-zinc-800 transition-colors": true,
             })}
           >
@@ -43,6 +44,7 @@ const NavBar = () => {
           </Link>
         ))}
       </ul>
+      <ThemeSwitch />
     </nav>
   );
 };
